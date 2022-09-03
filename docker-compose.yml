@@ -1,11 +1,15 @@
-version: "3.3"
+version: "3.9"
 
 services:
-  app:
+  rest-recipe-api:
+    container_name: rest-recipe-api
     build:
       context: .
+      args:
+        - DEV=true
     ports:
       - "8000:8000"
     volumes:
       - ./app:/app
-    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    command: >
+      sh -c "python manage.py 0.0.0.0:8000"
